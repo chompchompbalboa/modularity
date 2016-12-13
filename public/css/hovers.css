@@ -1,0 +1,7 @@
+.hoverAppIcon {
+    color: white;
+}
+
+.hoverAppIcon:hover {
+    color: rgb(59, 203, 247);
+}

@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+* This is modularity
+*
+* thisismodularity.com
+*/
+$thisismodularity = function() {
+    Route::post('/api', 'APIController@api');
+    Route::get('/{any}', 'BladeController@load')->where('any', '.*');
+    
+};
+Route::group(['domain' => 'thisismodularity.com'], $thisismodularity);
+Route::group(['domain' => 'thisismodularity.local'], $thisismodularity);
+
+/*
+* Other sites
+*/
+Route::post('/api', 'APIController@api');
+Route::get('/{any}', 'BladeController@load')->where('any', '.*');
