@@ -1,5 +1,5 @@
 /**
-* Site.js
+* AppDashboardContainerSection.js
 * @copyright simplespot.co, 2016-Present. All Rights Reserved.
 * @author Rocky Eastman Jr. <eastmanrjr@gmail.com>
 *
@@ -10,11 +10,11 @@ const React = require('react');
 const Radium = require('radium');
 
 /**
-* App DashboardDocked
+* App DashboardContainerSection
 *
-* @module Site
+* @module AppDashboardContainerSection
 */
-class Site extends React.Component {
+class AppDashboardContainerSection extends React.Component {
 
     /**
     * Constructor
@@ -50,14 +50,12 @@ class Site extends React.Component {
     _div() {
         return {
             style: {
-                width: "100vw",
-                height: "100vh",
+                margin: "2vh 0 0 0",
+                width: "100%",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "3em",
-                "@media (min-width: 64em)": {
-                }
+                flexFlow: "row wrap",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
             }
         }
     }
@@ -69,13 +67,13 @@ class Site extends React.Component {
     * @return {string}
     */
     render() {
-        let {content, ...other} = this.props;
+        var {children, ...other} = this.props;
         let _div = this._div();
         return (
             <div style={_div.style}>
-                {content.site.meta.title}
+                {children}
             </div>
         )
     }    
 }
-module.exports = Radium(Site);
+module.exports = Radium(AppDashboardContainerSection);

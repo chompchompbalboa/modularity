@@ -1,7 +1,8 @@
-.hoverAppIcon {
-    color: white;
+.hoverAppLink {
+    color: rgb(145, 145, 145);
+    transition: color 0.25s;
 }
 
-.hoverAppIcon:hover {
+.hoverAppLink:hover {
     color: rgb(59, 203, 247);
 }

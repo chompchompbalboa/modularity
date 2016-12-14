@@ -9,7 +9,10 @@
 const React = require('react');
 const Radium = require('radium');
 
-const AppDashboardVisibleHeader = require('../AppDashboardVisibleHeader/AppDashboardVisibleHeader');
+const AppDashboardHeader = require('../AppDashboardHeader/AppDashboardHeader');
+const AppDashboardModule = require('../AppDashboardModule/AppDashboardModule');
+const AppDashboardModules = require('../AppDashboardModules/AppDashboardModules');
+const AppDashboardOverview = require('../AppDashboardOverview/AppDashboardOverview');
 
 /**
 * App DashboardVisible
@@ -58,10 +61,6 @@ class AppDashboardVisible extends React.Component {
                 top: "0vh",
                 left: "0vw",
                 width: "100%",
-                display: "flex",
-                flexFlow: "row wrap",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
                 transition: "all 0.5s",
                 "@media (min-width: 64em)": {
                 }
@@ -80,7 +79,10 @@ class AppDashboardVisible extends React.Component {
         let _div = this._div(visible);
         return (
             <div style={_div.style}>
-                <AppDashboardVisibleHeader content={content} />
+                <AppDashboardHeader key={1} content={content} />
+                <AppDashboardOverview key={2} content={content} />
+                <AppDashboardModules key={3} content={content} />
+                <AppDashboardModule key={4} content={content} />
             </div>
         )
     }    

@@ -1,5 +1,5 @@
 /**
-* AppDashboardVisibleHeader.js
+* AppDashboardHeader.js
 * @copyright simplespot.co, 2016-Present. All Rights Reserved.
 * @author Rocky Eastman Jr. <eastmanrjr@gmail.com>
 *
@@ -12,11 +12,11 @@ const Radium = require('radium');
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
 
 /**
-* App DashboardVisibleHeader
+* App DashboardHeader
 *
-* @module AppDashboardVisibleHeader
+* @module AppDashboardHeader
 */
-class AppDashboardVisibleHeader extends React.Component {
+class AppDashboardHeader extends React.Component {
 
     /**
     * Constructor
@@ -95,10 +95,10 @@ class AppDashboardVisibleHeader extends React.Component {
         return (
             <div style={_div.style}>
                 <ChangeContentLink changes={[{key: "app.display.AppDashboard", value: "AppDashboardDocked"}]}>
-                    <div className="hoverAppIcon" style={_link.style}>&#x2573;</div>
+                    <div className="hoverAppLink" style={_link.style}>&#x2573;</div>
                 </ChangeContentLink>
             </div>
         )
     }    
 }
-module.exports = Radium(AppDashboardVisibleHeader);
+module.exports = Radium(AppDashboardHeader);

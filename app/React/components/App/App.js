@@ -59,6 +59,7 @@ class App extends React.Component {
                 left: "0vw",
                 width: "100vw",
                 height: "100vh",
+                fontFamily: "Source Sans Pro, sans-serif"
             }
         }
     }

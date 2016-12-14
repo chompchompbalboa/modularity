@@ -59,11 +59,21 @@ class APIController extends Controller
      */
     public function fetchApp($data, $request)
     {
-        return ["display" => [
-                    "App" => "NotAppDashboard",
-                    "AppDashboard" => "AppDashboardVisible"
-                    ]
-                ];
+        return [
+            "display" => [
+                "App" => "AppDashboard",
+                "AppDashboard" => "AppDashboardVisible",
+                "AppDashboardOverview" => [
+                    "position" => "center"
+                ],
+                "AppDashboardModules" => [
+                    "position" => "right"
+                ],
+                "AppDashboardModule" => [
+                    "position" => "right"
+                ],
+            ]
+        ];
     }
 
 
@@ -74,6 +84,10 @@ class APIController extends Controller
      */
     public function fetchSite($data, $request)
     {
-        return ["something" => "something else"];
+        return [
+            "meta" => [
+                "title" => "Modularity"
+            ]
+        ];
     }
 }

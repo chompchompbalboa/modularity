@@ -58,7 +58,7 @@ class AppDashboardDocked extends React.Component {
                 top: "0vh",
                 left: "23.5vw",
                 width: "4vw",
-                height: "100vw",
+                height: "100vh",
                 transition: "all 0.5s",
                 "@media (min-width: 64em)": {
                     display: "flex",
@@ -106,7 +106,7 @@ class AppDashboardDocked extends React.Component {
         return (
             <div style={_div.style}>
                 <ChangeContentLink changes={[{key: "app.display.AppDashboard", value: "AppDashboardVisible"}]}>
-                    <div className="hoverAppIcon" style={_link.style}>&#x21b1;</div>
+                    <div className="hoverAppLink" style={_link.style}>&#x21b1;</div>
                 </ChangeContentLink>
             </div>
         )

@@ -1,5 +1,5 @@
 /**
-* Site.js
+* AppDashboardVisibleContainer.js
 * @copyright simplespot.co, 2016-Present. All Rights Reserved.
 * @author Rocky Eastman Jr. <eastmanrjr@gmail.com>
 *
@@ -10,11 +10,11 @@ const React = require('react');
 const Radium = require('radium');
 
 /**
-* App DashboardDocked
+* App DashboardVisibleContainer
 *
-* @module Site
+* @module AppDashboardVisibleContainer
 */
-class Site extends React.Component {
+class AppDashboardVisibleContainer extends React.Component {
 
     /**
     * Constructor
@@ -47,16 +47,25 @@ class Site extends React.Component {
     * @function _div
     * @return {object}
     */
-    _div() {
+    _div(position) {
+        let left = {sm: "3.5%", md: "3.5%", lg: "7.5%"};
+        left = (position === "left" ? {sm: "-103.5%", md: "-103.5%", lg: "-107.5%"} : left);
+        left = (position === "right" ? {sm: "103.5%", md: "103.5%", lg: "107.5%"} : left);
         return {
             style: {
-                width: "100vw",
-                height: "100vh",
+                position: "absolute",
+                top: "2vh",
+                left: left.sm,
+                width: "93%",
+                transition: "left 0.5s",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "3em",
+                flexDirection: "row wrap",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
                 "@media (min-width: 64em)": {
+                    top: "8vh",
+                    left: left.lg,
+                    width: "85%",
                 }
             }
         }
@@ -69,13 +78,13 @@ class Site extends React.Component {
     * @return {string}
     */
     render() {
-        let {content, ...other} = this.props;
-        let _div = this._div();
+        var {children, position, ...other} = this.props;
+        let _div = this._div(position);
         return (
             <div style={_div.style}>
-                {content.site.meta.title}
+                {children}
             </div>
         )
     }    
 }
-module.exports = Radium(Site);
+module.exports = Radium(AppDashboardVisibleContainer);
