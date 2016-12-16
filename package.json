@@ -30,7 +30,9 @@
     "vinyl-source-stream": "1.1.0",
     "watchify": "3.7.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-color": "^2.10.0"
+  },
   "scripts": {
     "test": "jest"
   },

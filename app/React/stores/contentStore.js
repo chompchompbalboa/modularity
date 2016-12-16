@@ -31,23 +31,6 @@ var _store = {
 var CHANGE_EVENT = 'change';
 
 /**
-* Determine the active bundle
-* 
-* @return {string}
-*/
-var activeBundle = function() {
-    switch(window.location.hostname) {
-        case "simplespot.local":
-        case "simplespot.com":
-            return "app"
-        break;
-        default:
-            return "site"
-    }
-
-};
-
-/**
 * Change any nested content within the store object
 * 
 * @function changeContent

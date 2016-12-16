@@ -71,29 +71,6 @@ class AppDashboardDocked extends React.Component {
     }
 
     /**
-    * Settings for: _link
-    *
-    * @function _link
-    * @return {object}
-    */
-    _link() {
-        return {
-            style: {
-                display: "none",
-                transition: "color 0.25s",
-                "@media (min-width: 64em)": {
-                    display: "block",
-                    height: "8vh",
-                    width: "4vw",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
-                }
-            }
-        }
-    }
-
-    /**
     * Render the component
     *
     * @function render
@@ -102,11 +79,15 @@ class AppDashboardDocked extends React.Component {
     render() {
         let {content, visible, ...other} = this.props;
         let _div = this._div(visible);
-        let _link = this._link();
         return (
             <div style={_div.style}>
-                <ChangeContentLink changes={[{key: "app.display.AppDashboard", value: "AppDashboardVisible"}]}>
-                    <div className="hoverAppLink" style={_link.style}>&#x21b1;</div>
+                <ChangeContentLink
+                    changes={[
+                        {key: "app.state.AppDashboard", value: "AppDashboardVisible"}
+                    ]}
+                    style="docked"
+                >
+                    &#x21b1;
                 </ChangeContentLink>
             </div>
         )

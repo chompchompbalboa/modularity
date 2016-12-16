@@ -12,8 +12,11 @@ const Radium = require('radium');
 const AppDashboardContainer = require('../AppDashboardContainer/AppDashboardContainer');
 const AppDashboardContainerNavigation = require('../AppDashboardContainerNavigation/AppDashboardContainerNavigation');
 const AppDashboardContainerSection = require('../AppDashboardContainerSection/AppDashboardContainerSection');
+const AppDashboardContainerSectionHeader = require('../AppDashboardContainerSectionHeader/AppDashboardContainerSectionHeader');
+const AppDashboardOverviewPages = require('../AppDashboardOverviewPages/AppDashboardOverviewPages');
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
 const ChangeContentInputText = require('../../lib/ChangeContentInputText/ChangeContentInputText');
+const Spacer = require('../../lib/Spacer/Spacer');
 /**
 * App Dashboard Overview
 *
@@ -55,10 +58,10 @@ class AppDashboardOverview extends React.Component {
     position(content) {
         let position = "center";
         if(content.app 
-            && content.app.display 
-            && content.app.display.AppDashboardOverview
-            && content.app.display.AppDashboardOverview.position) {
-            position = content.app.display.AppDashboardOverview.position;
+            && content.app.state 
+            && content.app.state.AppDashboardOverview
+            && content.app.state.AppDashboardOverview.position) {
+            position = content.app.state.AppDashboardOverview.position;
         }
         return position;
     }
@@ -76,11 +79,20 @@ class AppDashboardOverview extends React.Component {
             <AppDashboardContainer content={content} position={position}>
                 <AppDashboardContainerSection>
                     <ChangeContentInputText
-                        changeKey="site.meta.title"
+                        changeKeys={["site.meta.title"]}
                         style="header"
                         value={content.site.meta.title}
-                    >
-                    </ChangeContentInputText>
+                    />
+                    <ChangeContentInputText
+                        changeKeys={["site.meta.domain"]}
+                        style="small"
+                        value={content.site.meta.domain}
+                    />
+                </AppDashboardContainerSection>
+                <Spacer height={{sm: "2vh", md: "2vh", lg: "3vh"}} />
+                <AppDashboardContainerSection>
+                    <AppDashboardContainerSectionHeader text="Pages"/>
+                    <AppDashboardOverviewPages content={content}/>
                 </AppDashboardContainerSection>
             </AppDashboardContainer>
         )

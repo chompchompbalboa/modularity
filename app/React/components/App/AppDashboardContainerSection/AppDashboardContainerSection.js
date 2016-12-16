@@ -53,7 +53,7 @@ class AppDashboardContainerSection extends React.Component {
                 margin: "2vh 0 0 0",
                 width: "100%",
                 display: "flex",
-                flexFlow: "row wrap",
+                flexDirection: "column",
                 justifyContent: "flex-start",
                 alignItems: "flex-start",
             }

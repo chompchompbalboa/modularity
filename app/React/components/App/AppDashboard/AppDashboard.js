@@ -52,8 +52,8 @@ class AppDashboard extends React.Component {
     */
     visible(content) {
         let display = "AppDashboardVisible";
-        if(content.app && content.app.display && content.app.display.AppDashboard) {
-            display = content.app.display.AppDashboard;
+        if(content.app && content.app.state && content.app.state.AppDashboard) {
+            display = content.app.state.AppDashboard;
         }
         return (display === "AppDashboardVisible")
     }
@@ -72,7 +72,7 @@ class AppDashboard extends React.Component {
                 left: "0vw",
                 width: "100vw",
                 height: "65vh",
-                backgroundColor: "rgba(0,0,0,0.85)",
+                backgroundColor: "rgba(41,41,41,0.975)",
                 overflowX: "hidden",
                 overflowY: "scroll",
                 color: "white",

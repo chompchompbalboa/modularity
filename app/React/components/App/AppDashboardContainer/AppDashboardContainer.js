@@ -59,7 +59,7 @@ class AppDashboardVisibleContainer extends React.Component {
                 width: "93%",
                 transition: "left 0.5s",
                 display: "flex",
-                flexDirection: "row wrap",
+                flexFlow: "row wrap",
                 justifyContent: "flex-start",
                 alignItems: "flex-start",
                 "@media (min-width: 64em)": {

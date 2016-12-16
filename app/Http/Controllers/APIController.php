@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Sites;
 use App\Models\User;
 
+use App\Services\SiteLoader;
+
 class APIController extends Controller
 {
     /**
@@ -18,13 +20,15 @@ class APIController extends Controller
     * @requires Sites
     * @requires User
     */
-    public function __construct(Request $request, Sites $sites, User $user)
+    public function __construct(Request $request, SiteLoader $siteLoader, Sites $sites, User $user)
     {
         $this->app = app();
         $this->request = $request;
+        $this->siteLoader = $siteLoader;
         $this->sites = $sites;
         $this->user = $user;
     }
+
     /**
      * API
      *
@@ -33,17 +37,17 @@ class APIController extends Controller
     public function api()
     {
         $request = $this->request->input('request');
-        $data = $this->request->input('data');
+        $data = json_decode($this->request->input('data'));
         switch($request) {
             case "INITIAL_CONTENT":
                 $response = [
                     [
                         "key" => "app",
-                        "value" => $this->fetchApp($request, $data)
+                        "value" => $this->initialApp($request, $data)
                     ],
                     [
                         "key" => "site",
-                        "value" => $this->fetchSite($request, $data)
+                        "value" => $this->initialSite($request, $data)
                     ],
                 ];
             break;
@@ -57,21 +61,46 @@ class APIController extends Controller
      *
      * @return array
      */
-    public function fetchApp($data, $request)
+    public function initialApp($request, $data)
     {
         return [
-            "display" => [
+            "state" => [
+                "device" => "desktop",
                 "App" => "AppDashboard",
                 "AppDashboard" => "AppDashboardVisible",
                 "AppDashboardOverview" => [
                     "position" => "center"
                 ],
+                "AppDashboardPage" => [
+                    "page" => "1",
+                    "position" => "right"
+                ],
                 "AppDashboardModules" => [
+                    "page" => "1",
                     "position" => "right"
                 ],
-                "AppDashboardModule" => [
+                "AppDashboardEdit" => [
+                    "page" => "1",
+                    "module" => "1",
                     "position" => "right"
                 ],
+            ],
+            "modules" => [
+                "LandingPage" => [
+                    "description" => "A simple landing page with background image and centered text",
+                    "header" => "Landing Page",
+                    "module" => "LandingPage",
+                    "props" => [
+                        "height" => 50,
+                        "width" => 50,
+                        "backgroundColor" => [
+                            "r" => 255,
+                            "g" => 0,
+                            "b" => 0,
+                            "a" => 1
+                        ]
+                    ]
+                ]
             ]
         ];
     }
@@ -82,12 +111,11 @@ class APIController extends Controller
      *
      * @return array
      */
-    public function fetchSite($data, $request)
+    public function initialSite($request, $data)
     {
-        return [
-            "meta" => [
-                "title" => "Modularity"
-            ]
-        ];
+        $site = $this->siteLoader->initialSite($data, $this->sites);
+        $site['state'] = [];
+        $site['state']['path'] = $data->url->path;
+        return $site;
     }
 }

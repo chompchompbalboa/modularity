@@ -54,6 +54,7 @@ class App extends React.Component {
     _section() {
         return {
             style: {
+                zIndex: "2",
                 position: "fixed",
                 top: "0vh",
                 left: "0vw",
@@ -74,8 +75,8 @@ class App extends React.Component {
     __app(app) {
         let payload;
         let module = "AppDashboard";
-        if (app.display && app.display.App) {
-            module = app.display.App
+        if (app.state && app.state.App) {
+            module = app.state.App
         }
         try {
             payload = this[module]();

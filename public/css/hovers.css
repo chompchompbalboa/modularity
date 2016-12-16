@@ -6,3 +6,54 @@
 .hoverAppLink:hover {
     color: rgb(59, 203, 247);
 }
+
+.hoverAppDashboardButton {
+    background-color: rgba(59, 203, 247, 0.75);
+    transition: background-color 0.25s;
+}
+
+.hoverAppDashboardButton:hover {
+    background-color: rgba(59, 203, 247, 0.55);
+}
+
+.hoverAppPageLink {
+    background-color: rgb(25,25,25);
+    color: white;
+    transition: all 0.25s;
+}
+
+.hoverAppPageLink:hover {
+    background-color: rgba(41,41,41,0.85);
+    color: rgb(59, 203, 247);
+}
+
+.hoverAppDashboardText {
+    background-color: rgb(25,25,25);
+    color: rgb(145, 145, 145);
+    transition: all 0.25s;
+}
+
+.hoverAppDashboardText:hover {
+    background-color: rgba(25,25,25,0.85);
+    color: rgb(59, 203, 247);
+}
+
+.hoverAppDelete {
+    background-color: rgb(255,0,0);
+    transition: all 0.25s;
+}
+
+.hoverAppDelete:hover {
+    background-color: rgba(255,0,0,0.85);
+}
+
+.hoverAppCounterButton {
+    background-color: rgb(100,100,100);
+    color: rgb(255, 255, 255);
+    transition: all 0.25s;
+}
+
+.hoverAppCounterButton:hover {
+    background-color: rgba(100,100,100,0.85);
+    color: rgb(59, 203, 247);
+}

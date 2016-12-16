@@ -94,8 +94,13 @@ class AppDashboardHeader extends React.Component {
         let _link = this._link();
         return (
             <div style={_div.style}>
-                <ChangeContentLink changes={[{key: "app.display.AppDashboard", value: "AppDashboardDocked"}]}>
-                    <div className="hoverAppLink" style={_link.style}>&#x2573;</div>
+                <ChangeContentLink
+                    changes={[
+                        {key: "app.state.AppDashboard", value: "AppDashboardDocked"}
+                    ]}
+                    style="header"
+                >
+                    &#x2573;
                 </ChangeContentLink>
             </div>
         )

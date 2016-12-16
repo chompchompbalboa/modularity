@@ -11,6 +11,9 @@ const Radium = require('radium');
 
 const AppDashboardContainer = require('../AppDashboardContainer/AppDashboardContainer');
 const AppDashboardContainerNavigation = require('../AppDashboardContainerNavigation/AppDashboardContainerNavigation');
+const AppDashboardContainerSection = require('../AppDashboardContainerSection/AppDashboardContainerSection');
+const AppDashboardContainerSectionHeader = require('../AppDashboardContainerSectionHeader/AppDashboardContainerSectionHeader');
+const AppDashboardModulesList = require('../AppDashboardModulesList/AppDashboardModulesList');
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
 /**
 * App Dashboard Modules
@@ -53,10 +56,10 @@ class AppDashboardModules extends React.Component {
     position(content) {
         let position = "right";
         if(content.app 
-            && content.app.display 
-            && content.app.display.AppDashboardModules
-            && content.app.display.AppDashboardModules.position) {
-            position = content.app.display.AppDashboardModules.position;
+            && content.app.state 
+            && content.app.state.AppDashboardModules
+            && content.app.state.AppDashboardModules.position) {
+            position = content.app.state.AppDashboardModules.position;
         }
         return position;
     }
@@ -70,17 +73,24 @@ class AppDashboardModules extends React.Component {
     render() {
         var {content, ...other} = this.props;
         let position = this.position(content);
+        let page = content.app.state.AppDashboardPage.page;
         return (
             <AppDashboardContainer content={content} position={position}>
                 <AppDashboardContainerNavigation>
                     <ChangeContentLink
                         changes={[
-                            {key: "app.display.AppDashboardModules.position", value: "right"},
-                            {key: "app.display.AppDashboardOverview.position", value: "center"}
-                        ]}>
-                        <div className="hoverAppLink">&#x2190;&nbsp;BACK</div>
+                            {key: "app.state.AppDashboardModules.position", value: "right"},
+                            {key: "app.state.AppDashboardPage.position", value: "center"}
+                        ]}
+                        style="navigation"
+                        >
+                        &#x2190;&nbsp;PAGE
                     </ChangeContentLink>
                 </AppDashboardContainerNavigation>
+                <AppDashboardContainerSection>
+                    <AppDashboardContainerSectionHeader text="Choose a module"/>
+                    <AppDashboardModulesList content={content} />
+                </AppDashboardContainerSection>
             </AppDashboardContainer>
         )
     }    
