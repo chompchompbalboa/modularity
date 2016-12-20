@@ -47,6 +47,15 @@
     background-color: rgba(255,0,0,0.85);
 }
 
+.hoverAppSave {
+    background-color: rgb(0,150,0);
+    transition: all 0.25s;
+}
+
+.hoverAppSave:hover {
+    background-color: rgba(0,150,0,0.85);
+}
+
 .hoverAppCounterButton {
     background-color: rgb(100,100,100);
     color: rgb(255, 255, 255);
@@ -56,4 +65,23 @@
 .hoverAppCounterButton:hover {
     background-color: rgba(100,100,100,0.85);
     color: rgb(59, 203, 247);
+}
+
+.hoverAppDeviceLink {
+    background-color: rgba(25,25,25,0.7);
+    color: white;
+    transition: all 0.25s;
+}
+
+.hoverAppDeviceLink:hover {
+    background-color: rgb(25,25,25);
+    color: rgb(59, 203, 247);
+}
+
+.hoverNavigationIcon {
+    background-color: rgba(255,255,255,0.75);
+}
+
+.hoverNavigationIcon:hover {
+    background-color: rgba(255,255,255,1);
 }

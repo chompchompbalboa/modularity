@@ -1,5 +1,5 @@
 /**
-* EditColor.js
+* EditBackgroundColor.js
 * @copyright simplespot.co, 2016-Present. All Rights Reserved.
 * @author Rocky Eastman Jr. <eastmanrjr@gmail.com>
 *
@@ -9,16 +9,18 @@
 const React = require('react');
 const Radium = require('radium');
 
-import { ChromePicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 const contentActions = require('../../../actions/contentActions');
 
+const EditContainer = require('../../lib/EditContainer/EditContainer');
+
 /**
-* Edit Color
+* Edit BackgroundColor
 *
-* @module EditColor
+* @module EditBackgroundColor
 */
-class EditColor extends React.Component {
+class EditBackgroundColor extends React.Component {
 
     /**
     * Constructor
@@ -60,19 +62,19 @@ class EditColor extends React.Component {
     }
 
     /**
-    * Settings for: _div
+    * Set the width for the color picker in px
     *
-    * @function _div
+    * @function pickerWidth
     * @return {object}
     */
-    _div() {
-        return {
-            style: {
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-            }
+    pickerWidth() {
+        let windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        let windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        if (windowWidth < 1024) {
+            return ((windowWidth * 0.93) - (windowHeight * .02))
+        }
+        else {
+            return ((windowWidth * 0.23375) - (windowHeight * .02))
         }
     }
 
@@ -84,18 +86,18 @@ class EditColor extends React.Component {
     */
     render() { 
         let {content, pageKey, moduleKey, ...other} = this.props;
-        let _div = this._div();
+        let pickerWidth = this.pickerWidth();
         let changeKey = "site.pages." + pageKey + ".modules." + moduleKey + ".props.backgroundColor";
         let color = content.site.pages[pageKey].modules[moduleKey].props.backgroundColor;
         return (
-            <div style={_div.style}>
-                Color
-                <ChromePicker 
+            <EditContainer header="Background Color">
+                <SketchPicker 
                     color={color}
+                    width={pickerWidth}
                     onChangeComplete={(color) => this.handleChangeComplete(color, changeKey)}
                 />
-            </div>
+            </EditContainer>
         )
     }    
 }
-module.exports = Radium(EditColor);
+module.exports = Radium(EditBackgroundColor);

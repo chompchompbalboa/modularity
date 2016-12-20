@@ -63,6 +63,8 @@ class BladeController extends Controller
      */
     public function siteData()
     {
-        return [];
+        return [
+            "title" => "An awesome website"
+        ];
     }
 }

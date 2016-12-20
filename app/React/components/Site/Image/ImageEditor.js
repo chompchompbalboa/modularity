@@ -1,5 +1,5 @@
 /**
-* Tile1Editor.js
+* ImageEditor.js
 * @copyright simplespot.co, 2016-Present. All Rights Reserved.
 * @author Rocky Eastman Jr. <eastmanrjr@gmail.com>
 *
@@ -10,18 +10,17 @@ const React = require('react');
 const Radium = require('radium');
 
 const AppDashboardContainerSection = require('../../App/AppDashboardContainerSection/AppDashboardContainerSection');
-const ChangeContentInputText = require('../../lib/ChangeContentInputText/ChangeContentInputText');
-const EditBackgroundColor = require('../../lib/EditBackgroundColor/EditBackgroundColor');
+const EditImage = require('../../lib/EditImage/EditImage');
 const EditHeight = require('../../lib/EditHeight/EditHeight');
+const EditPosition = require('../../lib/EditPosition/EditPosition');
 const EditWidth = require('../../lib/EditWidth/EditWidth');
-const Spacer = require('../../lib/Spacer/Spacer');
 
 /**
-* Tile 1 Editor
+* Image Editor
 *
-* @module Tile1Editor
+* @module ImageEditor
 */
-class Tile1Editor extends React.Component {
+class ImageEditor extends React.Component {
 
     /**
     * Constructor
@@ -49,18 +48,6 @@ class Tile1Editor extends React.Component {
     }
 
     /**
-    * Settings for: _div
-    *
-    * @function _div
-    * @return {object}
-    */
-    _div() {
-        return {
-            style: {}
-        }
-    }
-
-    /**
     * Render the component
     *
     * @function render
@@ -68,17 +55,14 @@ class Tile1Editor extends React.Component {
     */
     render() {
         let {content, pageKey, moduleKey, ...other} = this.props;
-        let _div = this._div();
         return (
-            <div style={_div.style}>
-                <AppDashboardContainerSection>
-                    <ChangeContentInputText
-                        changeKeys={["site.pages." + pageKey + ".modules." + moduleKey + ".header"]}
-                        style="header"
-                        value={content.site.pages[pageKey].modules[moduleKey].header}
-                    />
-                </AppDashboardContainerSection>
-                <Spacer height={{sm: "2vh", md: "2vh", lg: "3vh"}} />
+            <AppDashboardContainerSection>
+                <EditImage
+                    content={content}
+                    header="Image"
+                    pageKey={pageKey}
+                    moduleKey={moduleKey}
+                />
                 <EditHeight
                     content={content} 
                     pageKey={pageKey}
@@ -89,13 +73,13 @@ class Tile1Editor extends React.Component {
                     pageKey={pageKey}
                     moduleKey={moduleKey}
                 /> 
-                <EditBackgroundColor
+                <EditPosition
                     content={content} 
                     pageKey={pageKey}
                     moduleKey={moduleKey}
-                /> 
-            </div>
+                />
+            </AppDashboardContainerSection>
         )
     }    
 }
-module.exports = Radium(Tile1Editor);
+module.exports = Radium(ImageEditor);

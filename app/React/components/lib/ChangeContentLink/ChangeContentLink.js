@@ -112,6 +112,13 @@ class ChangeContentLink extends React.Component {
                 };
                 hover = "hoverAppDashboardButton";
             break;
+            case "device":
+                style = {
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                };
+                hover = "hoverAppDeviceLink";
+            break;
             case "docked":
                 style = {
                     cursor: "pointer",
@@ -145,6 +152,10 @@ class ChangeContentLink extends React.Component {
                     cursor: "pointer",
                 };
                 hover = "hoverAppLink";
+            break;
+            default:
+                style = {cursor: "pointer"};
+                hover = {};
             break;
         }
         return {hover: hover, style: style};

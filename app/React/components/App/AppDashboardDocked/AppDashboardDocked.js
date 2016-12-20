@@ -60,12 +60,10 @@ class AppDashboardDocked extends React.Component {
                 width: "4vw",
                 height: "100vh",
                 transition: "all 0.5s",
-                "@media (min-width: 64em)": {
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                    alignItems: "center"
-                }
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                alignItems: "center"
             }
         }
     }

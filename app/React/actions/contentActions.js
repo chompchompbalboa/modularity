@@ -175,6 +175,22 @@ var contentActions = {
     },
 
     /**
+    * Save Site
+    * 
+    * @function saveSite
+    */
+    saveSite: function(content, info){
+        let changes = [
+            {key: "app.state.save", value: "saving"}
+        ];
+        ContentDispatcher.handleAction({
+            actionType: "CHANGE_CONTENT",
+            data: changes
+        });
+        this.fetchContent("SAVE_SITE", {content: content});
+    },
+
+    /**
     * Send a request to the server via AJAX
     * 
     * @function _ajax

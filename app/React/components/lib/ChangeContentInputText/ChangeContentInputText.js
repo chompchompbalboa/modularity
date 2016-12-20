@@ -70,6 +70,22 @@ class ChangeContentInputText extends React.Component {
     _style(type) {
         let style;
         switch (type) {
+            case "dashboard":
+                style = {
+                    margin: "0vh 2vw",
+                    borderWidth: "0px",
+                    borderRadius: "10px",
+                    backgroundColor: "rgb(145,145,145)",
+                    textAlign: "center",
+                    fontSize: "1em",
+                    color: "white",
+                    "@media (min-width: 64em)": {
+                        margin: "0vh 0.5vw",
+                        width: "3.5vw",
+                        height: "2vw",
+                    }
+                }
+            break;
             case "editor":
                 style = {
                     padding: "1vh 1vh",

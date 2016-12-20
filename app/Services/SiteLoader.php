@@ -13,8 +13,8 @@ class SiteLoader
     */
     public function initialSite($data, $sites)
     {
-        // Replace .local with .com => FOR LOCAL DEVELOPEMNT PURPOSES ONLY
-        $url = str_replace(".local", ".com", $data->url->domain);
+        // Replace .local with .com (for development purposes)
+        $url = str_replace(".local", ".com", $data['url']['domain']);
 
         // Fetch site from db
         $site = $sites->where('domain', '=', $url)->first();

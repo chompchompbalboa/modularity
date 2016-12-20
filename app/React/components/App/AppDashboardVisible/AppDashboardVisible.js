@@ -11,8 +11,10 @@ const Radium = require('radium');
 
 const AppDashboardEdit = require('../AppDashboardEdit/AppDashboardEdit');
 const AppDashboardHeader = require('../AppDashboardHeader/AppDashboardHeader');
+const AppDashboardImages = require('../AppDashboardImages/AppDashboardImages');
 const AppDashboardPage = require('../AppDashboardPage/AppDashboardPage');
 const AppDashboardModules = require('../AppDashboardModules/AppDashboardModules');
+const AppDashboardNavigation = require('../AppDashboardNavigation/AppDashboardNavigation');
 const AppDashboardOverview = require('../AppDashboardOverview/AppDashboardOverview');
 
 /**
@@ -82,9 +84,11 @@ class AppDashboardVisible extends React.Component {
             <div style={_div.style}>
                 <AppDashboardHeader key={1} content={content} />
                 <AppDashboardOverview key={2} content={content} />
-                <AppDashboardPage key={3} content={content} />
+                <AppDashboardNavigation key={3} content={content} />
+                <AppDashboardPage key={4} content={content} />
                 <AppDashboardModules key={5} content={content} />
-                <AppDashboardEdit key={4} content={content} />
+                <AppDashboardEdit key={6} content={content} />
+                <AppDashboardImages key={7} content={content} />
             </div>
         )
     }    

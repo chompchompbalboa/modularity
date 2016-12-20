@@ -55,11 +55,7 @@ class App extends React.Component {
         return {
             style: {
                 zIndex: "2",
-                position: "fixed",
-                top: "0vh",
-                left: "0vw",
-                width: "100vw",
-                height: "100vh",
+                position: "relative",
                 fontFamily: "Source Sans Pro, sans-serif"
             }
         }

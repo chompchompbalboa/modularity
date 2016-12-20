@@ -9,8 +9,9 @@
 const React = require('react');
 const Radium = require('radium');
 
-const AppDashboardContainerSectionHeader = require('../../App/AppDashboardContainerSectionHeader/AppDashboardContainerSectionHeader');
-const ChangeContentInputText = require('../../lib/ChangeContentInputText/ChangeContentInputText');
+const Utils = require('../../../lib/Utils');
+
+const EditContainer = require('../../lib/EditContainer/EditContainer');
 const EditNumber = require('../../lib/EditNumber/EditNumber');
 
 /**
@@ -46,23 +47,6 @@ class EditWidth extends React.Component {
     }
 
     /**
-    * Settings for: _div
-    *
-    * @function _div
-    * @return {object}
-    */
-    _div() {
-        return {
-            style: {
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-            }
-        }
-    }
-
-    /**
     * Render the component
     *
     * @function render
@@ -70,16 +54,15 @@ class EditWidth extends React.Component {
     */
     render() {
         let {content, pageKey, moduleKey, ...other} = this.props;
-        let _div = this._div();
-        let changeKey = "site.pages." + pageKey + ".modules." + moduleKey + ".props";
+        let active = Utils.getActiveDeviceInfo(content, pageKey, moduleKey, "width");
         return (
-            <div style={_div.style}>
-                Width 
+            <EditContainer header="Width">
+                {active.label}
                 <EditNumber
-                    changeKeys={[changeKey + ".width"]}
-                    value={content.site.pages[pageKey].modules[moduleKey].props.width}
+                    changeKeys={active.changeKeys}
+                    value={active.value}
                 />
-            </div>
+            </EditContainer>
         )
     }    
 }

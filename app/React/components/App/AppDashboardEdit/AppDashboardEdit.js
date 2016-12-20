@@ -12,9 +12,14 @@ const Radium = require('radium');
 const AppDashboardContainer = require('../AppDashboardContainer/AppDashboardContainer');
 const AppDashboardContainerNavigation = require('../AppDashboardContainerNavigation/AppDashboardContainerNavigation');
 const AppDashboardContainerSection = require('../AppDashboardContainerSection/AppDashboardContainerSection');
+const AppDashboardContainerSectionHeader = require('../AppDashboardContainerSectionHeader/AppDashboardContainerSectionHeader');
+const AppDashboardDevices = require('../AppDashboardDevices/AppDashboardDevices');
+const ChangeContentInputText = require('../../lib/ChangeContentInputText/ChangeContentInputText');
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
+const Spacer = require('../../lib/Spacer/Spacer');
 
-const LandingPageEditor = require('../../Site/LandingPage/LandingPageEditor');
+const ImageEditor = require('../../Site/Image/ImageEditor');
+const TextBoxEditor = require('../../Site/TextBox/TextBoxEditor');
 /**
 * App Dashboard Edit
 *
@@ -65,6 +70,22 @@ class AppDashboardEdit extends React.Component {
     }
 
     /**
+    * Settings for: _header
+    *
+    * @function _header
+    * @return string
+    */
+    _header(content, pageKey, moduleKey) {
+        if (content.site.pages[pageKey]
+            && content.site.pages[pageKey].modules[moduleKey]) {
+            return content.site.pages[pageKey].modules[moduleKey].header;
+        }
+        else {
+            return "Header";
+        }
+    }
+
+    /**
     * Settings for: __editor
     *
     * @function __editor
@@ -82,14 +103,30 @@ class AppDashboardEdit extends React.Component {
     }
 
     /**
-    * Landing Page Editor
+    * Image Editor
     *
-    * @function LandingPageEditor
+    * @function ImageEditor
     * @return string
     */
-    LandingPageEditor(content, pageKey, moduleKey) {
+    ImageEditor(content, pageKey, moduleKey) {
         return (
-            <LandingPageEditor
+            <ImageEditor
+                content={content}
+                pageKey={pageKey}
+                moduleKey={moduleKey}
+            />
+        );
+    }
+
+    /**
+    * TextBox Editor
+    *
+    * @function TextBoxEditor
+    * @return string
+    */
+    TextBoxEditor(content, pageKey, moduleKey) {
+        return (
+            <TextBoxEditor
                 content={content}
                 pageKey={pageKey}
                 moduleKey={moduleKey}
@@ -108,6 +145,7 @@ class AppDashboardEdit extends React.Component {
         let position = this.position(content);
         let pageKey = content.app.state.AppDashboardEdit.page;
         let moduleKey = content.app.state.AppDashboardEdit.module;
+        let _header = this._header(content, pageKey, moduleKey);
         let __editor = this.__editor(content, pageKey, moduleKey);
         return (
             <AppDashboardContainer content={content} position={position}>
@@ -123,8 +161,16 @@ class AppDashboardEdit extends React.Component {
                     </ChangeContentLink>
                 </AppDashboardContainerNavigation>
                 <AppDashboardContainerSection>
+                    <ChangeContentInputText
+                        changeKeys={["site.pages." + pageKey + ".modules." + moduleKey + ".header"]}
+                        style="header"
+                        value={_header}
+                    />
+                    <Spacer height={{sm: "2vh", md: "2vh", lg: "3vh"}} />
+                    <AppDashboardContainerSectionHeader text="Device"/>
+                    <AppDashboardDevices />
                     {__editor}
-                </AppDashboardContainerSection>
+                </AppDashboardContainerSection>   
             </AppDashboardContainer>
         )
     }    

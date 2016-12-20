@@ -10,6 +10,7 @@ const React = require('react');
 const Radium = require('radium');
 
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
+const ContentActionLink = require('../../lib/ContentActionLink/ContentActionLink');
 
 /**
 * App DashboardHeader
@@ -64,25 +65,6 @@ class AppDashboardHeader extends React.Component {
     }
 
     /**
-    * Settings for: _link
-    *
-    * @function _link
-    * @return {object}
-    */
-    _link() {
-        return {
-            style: {
-                display: "none",
-                transition: "color 0.25s",
-                "@media (min-width: 64em)": {
-                    display: "block",
-                    margin: "0 1.25vw 0 0"
-                }
-            }
-        }
-    }
-
-    /**
     * Render the component
     *
     * @function render
@@ -91,7 +73,6 @@ class AppDashboardHeader extends React.Component {
     render() {
         var {content, ...other} = this.props;
         let _div = this._div();
-        let _link = this._link();
         return (
             <div style={_div.style}>
                 <ChangeContentLink

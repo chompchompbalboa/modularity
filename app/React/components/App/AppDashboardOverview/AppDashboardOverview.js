@@ -13,9 +13,13 @@ const AppDashboardContainer = require('../AppDashboardContainer/AppDashboardCont
 const AppDashboardContainerNavigation = require('../AppDashboardContainerNavigation/AppDashboardContainerNavigation');
 const AppDashboardContainerSection = require('../AppDashboardContainerSection/AppDashboardContainerSection');
 const AppDashboardContainerSectionHeader = require('../AppDashboardContainerSectionHeader/AppDashboardContainerSectionHeader');
+const AppDashboardDevices = require('../AppDashboardDevices/AppDashboardDevices');
+const AppDashboardOverviewNavigation = require('../AppDashboardOverviewNavigation/AppDashboardOverviewNavigation');
 const AppDashboardOverviewPages = require('../AppDashboardOverviewPages/AppDashboardOverviewPages');
+const AppDashboardSaveButton = require('../AppDashboardSaveButton/AppDashboardSaveButton');
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
 const ChangeContentInputText = require('../../lib/ChangeContentInputText/ChangeContentInputText');
+const ContentActionLink = require('../../lib/ContentActionLink/ContentActionLink');
 const Spacer = require('../../lib/Spacer/Spacer');
 /**
 * App Dashboard Overview
@@ -91,8 +95,17 @@ class AppDashboardOverview extends React.Component {
                 </AppDashboardContainerSection>
                 <Spacer height={{sm: "2vh", md: "2vh", lg: "3vh"}} />
                 <AppDashboardContainerSection>
+                    <AppDashboardContainerSectionHeader text="Device"/>
+                    <AppDashboardDevices />
+                </AppDashboardContainerSection>
+                <Spacer height={{sm: "2vh", md: "2vh", lg: "3vh"}} />
+                <AppDashboardContainerSection>
                     <AppDashboardContainerSectionHeader text="Pages"/>
                     <AppDashboardOverviewPages content={content}/>
+                </AppDashboardContainerSection>
+                <Spacer height={{sm: "2vh", md: "2vh", lg: "3vh"}} />
+                <AppDashboardContainerSection>
+                    <AppDashboardSaveButton content={content} />
                 </AppDashboardContainerSection>
             </AppDashboardContainer>
         )

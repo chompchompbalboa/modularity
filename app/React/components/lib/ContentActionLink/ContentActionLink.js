@@ -150,6 +150,101 @@ class ContentActionLink extends React.Component {
                 };
                 hover = "hoverAppDelete";
             break;
+            case "save":
+                style = {
+                    width: "93vw",
+                    height: "5vh",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    fontFamily: "Source Sans Pro, sans-serif",
+                    fontSize: "0.75em",
+                    fontWeight: "400",
+                    color: "white",
+                    textTransform: "uppercase",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    "@media (min-width: 64em)": {
+                        margin: "0 0 2vh 0",
+                        borderRadius: "10px",
+                        width: "23.375vw",
+                    }
+                };
+                hover = "hoverAppSave";
+            break;
+            case "save-success":
+                style = {
+                    width: "93vw",
+                    height: "5vh",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    fontFamily: "Source Sans Pro, sans-serif",
+                    fontSize: "0.75em",
+                    fontWeight: "400",
+                    color: "white",
+                    textTransform: "uppercase",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "rgba(0,0,255,1)",
+                    "@media (min-width: 64em)": {
+                        margin: "0 0 2vh 0",
+                        borderRadius: "10px",
+                        width: "23.375vw",
+                    }
+                };
+                hover = "";
+            break;
+            case "save-fail":
+                style = {
+                    width: "93vw",
+                    height: "5vh",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    fontFamily: "Source Sans Pro, sans-serif",
+                    fontSize: "0.75em",
+                    fontWeight: "400",
+                    color: "white",
+                    textTransform: "uppercase",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "rgba(255,0,0,1)",
+                    "@media (min-width: 64em)": {
+                        margin: "0 0 2vh 0",
+                        borderRadius: "10px",
+                        width: "23.375vw",
+                    }
+                };
+                hover = "";
+            break;
+            case "saving":
+                style = {
+                    width: "93vw",
+                    height: "5vh",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    fontFamily: "Source Sans Pro, sans-serif",
+                    fontSize: "0.75em",
+                    fontWeight: "400",
+                    color: "white",
+                    textTransform: "uppercase",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "rgba(150,150,0,1)",
+                    "@media (min-width: 64em)": {
+                        margin: "0 0 2vh 0",
+                        borderRadius: "10px",
+                        width: "23.375vw",
+                    }
+                };
+                hover = "";
+            break;
+            default:
+                style = {};
+                hover = {};
+            break;
         }
         return {hover: hover, style: style};
     }

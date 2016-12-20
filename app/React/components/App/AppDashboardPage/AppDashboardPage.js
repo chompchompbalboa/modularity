@@ -14,6 +14,7 @@ const AppDashboardContainerNavigation = require('../AppDashboardContainerNavigat
 const AppDashboardContainerSection = require('../AppDashboardContainerSection/AppDashboardContainerSection');
 const AppDashboardContainerSectionHeader = require('../AppDashboardContainerSectionHeader/AppDashboardContainerSectionHeader');
 const AppDashboardPageModules = require('../AppDashboardPageModules/AppDashboardPageModules');
+const AppDashboardDevices = require('../AppDashboardDevices/AppDashboardDevices');
 const ChangeContentInputText = require('../../lib/ChangeContentInputText/ChangeContentInputText');
 const ChangeContentLink = require('../../lib/ChangeContentLink/ChangeContentLink');
 const ContentActionLink = require('../../lib/ContentActionLink/ContentActionLink');
@@ -101,6 +102,10 @@ class AppDashboardPage extends React.Component {
                             style="small"
                             value={content.site.pages[page]["path"]}
                         />
+                    </AppDashboardContainerSection>
+                    <AppDashboardContainerSection>
+                        <AppDashboardContainerSectionHeader text="Device"/>
+                        <AppDashboardDevices />
                     </AppDashboardContainerSection>
                     <AppDashboardContainerSection>
                         <AppDashboardContainerSectionHeader 

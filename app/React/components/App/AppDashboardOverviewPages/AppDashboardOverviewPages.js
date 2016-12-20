@@ -106,6 +106,15 @@ class AppDashboardPages extends React.Component {
         let __links = this.__links(content);
         return (
             <div style={_div.style}>
+                <ChangeContentLink
+                    changes={[
+                        {key: "site.state.menu", value: true},
+                        {key: "app.state.AppDashboardOverview.position", value: "left"}
+                    ]}
+                    style="dashboard"
+                    >
+                    Menu
+                </ChangeContentLink>
                 {__links}
                 <ContentActionLink
                     action="insertPage"
